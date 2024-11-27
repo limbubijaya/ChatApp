@@ -32,7 +32,11 @@ const authStore = create((set, get) => ({
       toast.success("Logged in successfully.");
       get().connectSocket();
     } catch (error) {
-      toast.error(error.response.data.message);
+      console.error("Login error:", error);
+      const errorMessage = error.response
+        ? error.response.data.message
+        : "Login failed. Please try again.";
+      toast.error(errorMessage);
     }
   },
 
