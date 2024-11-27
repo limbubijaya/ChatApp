@@ -4,7 +4,9 @@ import { io } from "socket.io-client";
 import { create } from "zustand";
 
 const BASE_URL =
-  process.env.REACT_APP_MODE === "development" ? "http://localhost:5000" : "/";
+  process.env.REACT_APP_MODE === "development"
+    ? "http://localhost:5000"
+    : "https://chatapp-1xu2.onrender.com";
 
 const authStore = create((set, get) => ({
   authUser: null,
@@ -32,11 +34,7 @@ const authStore = create((set, get) => ({
       toast.success("Logged in successfully.");
       get().connectSocket();
     } catch (error) {
-      console.error("Login error:", error);
-      const errorMessage = error.response
-        ? error.response.data.message
-        : "Login failed. Please try again.";
-      toast.error(errorMessage);
+      toast.error(error.response.data.message);
     }
   },
 
