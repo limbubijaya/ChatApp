@@ -1,4 +1,4 @@
-const express = require("express");
+import express from "express";
 const dotenv = require("dotenv");
 const cors = require("cors");
 const connectDB = require("./lib/db");
