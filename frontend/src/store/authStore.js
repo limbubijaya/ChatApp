@@ -3,7 +3,7 @@ import { axiosInstance } from "../lib/axiox";
 import { io } from "socket.io-client";
 import { create } from "zustand";
 
-const BASE_URL = import.meta.env.MODE === "development" ? "http://localhost:5000" : "/";
+const BASE_URL = process.env.REACT_APP_MODE === "development" ? "http://localhost:5000" : "/";
 
 const authStore = create((set, get) => ({
   authUser: null,
