@@ -6,7 +6,7 @@ import { create } from "zustand";
 const BASE_URL =
   process.env.REACT_APP_MODE === "development"
     ? "http://localhost:5000"
-    : "https://chatapp-1xu2.onrender.com";
+    : "/";
 
 const authStore = create((set, get) => ({
   authUser: null,
