@@ -1,4 +1,3 @@
-import toast from "react-hot-toast";
 import { axiosInstance } from "../lib/axiox";
 import authStore from "./authStore";
 import { create } from "zustand";
