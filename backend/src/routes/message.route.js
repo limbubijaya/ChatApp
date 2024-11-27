@@ -1,10 +1,10 @@
-const express = require("express");
-const { verifyToken } = require("../controllers/auth.controller");
-const {
+import express from "express";
+import { verifyToken } from "../controllers/auth.controller.js";
+import {
   getSideBarUsers,
   getChatHistory,
   sendMessage,
-} = require("../controllers/message.controller");
+} from "../controllers/message.controller.js";
 
 const router = express.Router();
 
@@ -12,4 +12,4 @@ router.get("/user", verifyToken, getSideBarUsers);
 router.get("/:id", verifyToken, getChatHistory);
 router.post("/send/:id", verifyToken, sendMessage);
 
-module.exports = router;
+export default router;

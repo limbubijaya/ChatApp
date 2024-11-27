@@ -1,7 +1,7 @@
-const generateToken = require("../lib/utils");
-const User = require("../model/userModel");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
+import generateToken from "../lib/utils.js";
+import User from "../model/userModel.js";
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 
 const signup = async (req, res) => {
   const { email, name, password } = req.body;
@@ -102,10 +102,4 @@ const verifyToken = async (req, res, next) => {
   }
 };
 
-module.exports = {
-  signup,
-  login,
-  logout,
-  checkUser,
-  verifyToken,
-};
+export { signup, login, logout, checkUser, verifyToken };

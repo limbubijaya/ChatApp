@@ -1,12 +1,12 @@
 import express from "express";
-const dotenv = require("dotenv");
-const cors = require("cors");
-const connectDB = require("./lib/db");
-const authRoutes = require("./routes/auth.route");
-const messageRoutes = require("./routes/message.route");
-const cookieParser = require("cookie-parser");
-const { app, server } = require("./lib/socket");
-const path = require("path");
+import dotenv from "dotenv";
+import cors from "cors";
+import connectDB from "./lib/db.js";
+import authRoutes from "./routes/auth.route.js";
+import messageRoutes from "./routes/message.route.js";
+import cookieParser from "cookie-parser";
+import { app, server } from "./lib/socket.js";
+import path from "path";
 
 dotenv.config();
 const __dirname = path.resolve();
