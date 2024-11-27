@@ -20,7 +20,12 @@ app.get("*", (req, res) => {
 app.use(express.json({ limit: "1000mb" }));
 app.use(express.urlencoded({ limit: "1000mb", extended: true }));
 app.use(cookieParser());
-app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+app.use(
+  cors({
+    origin: ["http://localhost:3000", "https://chatapp-1xu2.onrender.com"],
+    credentials: true,
+  })
+);
 app.use("/api/auth", authRoutes);
 app.use("/api/message", messageRoutes);
 
