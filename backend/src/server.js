@@ -12,22 +12,22 @@ import { fileURLToPath } from "url";
 dotenv.config();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-app.use(express.static(path.join(__dirname, "../../frontend/build")));
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../../frontend/build/index.html"));
-});
-
 app.use(express.json({ limit: "1000mb" }));
 app.use(express.urlencoded({ limit: "1000mb", extended: true }));
 app.use(cookieParser());
 app.use(
   cors({
-    origin: ["http://localhost:3000", "https://chatapp-1xu2.onrender.com"],
+    origin: ["http://localhost:3000"],
     credentials: true,
   })
 );
 app.use("/api/auth", authRoutes);
 app.use("/api/message", messageRoutes);
+
+app.use(express.static(path.join(__dirname, "../../frontend/build")));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../../frontend/build/index.html"));
+});
 
 const PORT = process.env.PORT || 5000;
 server.listen(PORT, () => {
