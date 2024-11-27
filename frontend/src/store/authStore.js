@@ -3,7 +3,8 @@ import { axiosInstance } from "../lib/axiox";
 import { io } from "socket.io-client";
 import { create } from "zustand";
 
-const BASE_URL = process.env.REACT_APP_MODE === "development" ? "http://localhost:5000" : "/";
+// const BASE_URL =
+//   process.env.REACT_APP_MODE === "development" ? "http://localhost:5000" : "/";
 
 const authStore = create((set, get) => ({
   authUser: null,
@@ -61,7 +62,7 @@ const authStore = create((set, get) => ({
     const { authUser } = get();
     if (!authUser || get().socket?.connected) return;
 
-    const socket = io(BASE_URL, {
+    const socket = io("http://localhost:5000", {
       query: { userId: authUser._id },
     });
     socket.connect();
